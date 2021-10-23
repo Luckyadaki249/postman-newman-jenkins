@@ -1,0 +1,19 @@
+{
+  "name": "postman-newman-jenkins",
+  "version": "1.0.0",
+  "description": "project for storing postman tests",
+  
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "api-test-production": "newman run tests/Jsonplaceholder.com.postman_collection.json"
+  },
+  "author": "Laxman Adaki",
+  "dependencies": {
+    "newman": "^5.3.0",
+    "npm": "^8.1.1",
+    "to": "^0.2.9",
+    "update": "^0.7.4"
+  }
+}
