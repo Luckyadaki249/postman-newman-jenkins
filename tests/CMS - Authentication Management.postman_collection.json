@@ -1,0 +1,111 @@
+{
+	"info": {
+		"_postman_id": "3b0c8bca-d494-4f3e-ae40-b0e3827339a2",
+		"name": "CMS - Authentication Management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "user-login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "appClientId",
+						"value": "2mq884ai06jrv0irv922fp6sh1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"username\": \"rohitpal1029\",\r\n\"password\": \"Rohit@123456\"\r\n}"
+				},
+				"url": {
+					"raw": "https://authentication-management.service.stage.cloud1.ws.continental-industry.com/user-login",
+					"protocol": "https",
+					"host": [
+						"authentication-management",
+						"service",
+						"stage",
+						"cloud1",
+						"ws",
+						"continental-industry",
+						"com"
+					],
+					"path": [
+						"user-login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "refresh-token",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "appClientId",
+						"value": "5o6njdpqgfnhitan0g6mbb53j3",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"refreshToken\": \"eyJjdHkiOiJKV1QiLCJlbmMiOiJBMjU2R0NNIiwiYWxnIjoiUlNBLU9BRVAifQ.AdE6ImRAER5UJ6hAUmuqIl2RcPN21IM2LjgZRj-s923eNArsK45Ejoxuwm_B5wKC6PrnXqn1n3Yr_-oacn4jkbjiVxXUSaPuRSqkzLxxdqAHo3cbu2HuDbB19vFxQWIt8blurRe_7tsXpFlUAqluNIGpNh6tYFRtDEbvdY3ItUml3Ym4cLHsypLLSd5M-GweZqj7Co7cbxvWh2vzvNmQh6B1x_hDmk5hmj4Z7pzYXsekmqdC376ky2QO73lXnCooAGrPPC5Kx6pY1ZP-N3kUAMKyyfWxdGZrt-Sns9r0nTCDU7226KDHgdHjfBhbwRyKB7cyvDDgRq4DRr4fwIbUrQ.mfhgttn3Mirz5FNv.yuNOPKgjYL11sxRsf7gIfSeUbYCI1mFvVdHBwm4kBJDSUIwbNIuuBJdOsk5RL7FblEx7gpg4uWYFiTMg_LfiT2V1rduMkAv86hSEYD7Ye4hbX-F-N91mPectOzaZ0gbcXuHJQfcUWMG2RQAwfbcDaz8wmSSyr8yfLz8lz-c5HFHt6tLCyDzS8rfrxfOKIGG4K6WEGd_JSX1TaYv7nkRUXMnTk9GwE7vok97r57rvoxaAFo9iH9R9GskpeFBgjKTxitzpCWex8hnqhCJrvL3n8pu_sVmaMzvfbhHgI34DGov64qLZt-H5Jnrsfxmbifqh1dcCjvZHXuszB796gk3k1pY3CI8JBgflukDx4AC2jJ35XyY4uqo0CQM9ejwmvwI-JR02MDmwdBxFcqhxrbMbmw93Lbsyr6ahGm1O62ZMgPGrCXOMtqrT9B9OS4wb648FDbDDzcIRGqXJ_u4-qlIXWKsvvjIPJlI90pI9oSzUx3ODLkw0Kq-pNQzfbNiZ_6mAvqMX-kF8KPO9cLqc6lql2dl516yjJGmBo7gsJ6Eh6l1wREgp4DmTOTwlayI0sTGjizzuJlr5Gv5VUVN7kFw8e8jwqoaU7Y763uZov4CiXs0berOAGKFRxAV3JK4Y7-xj9pM0nCxjP9PcOiL3A2HtNmMLrtR6PZ4ioipRjZHtHIr_-IHD-JEEkFfOWkDGBR9wtGQVGKhxvk14kL0_sUn_PUwwSi4cFBvGic1IdS8Xxgp_Vc6pnOpvCq4eC7vKfZxB0u5-XWpBB1_wCm9nmFOsCqc28WZ757yR_fq4gmYishfu_WYdg-mAZG8gc-9snw8yEQOQ0IsTVzDRvuXTmnEsG4Ca6SVQdl5D4z8MmyLGsH6w8MxQ5vAIvyGTCDkwIGAK8TPyGJhYvzv5-2BcFlL_knzdQvVLiswNcJ1prd4gMcKRCe4S97JKY-y669U9v6z78tui2piU2I_f7R7jO5_VJBlCkd82z2VkMKISEPZpLfT1DbcbC5MAhrKbDCJw3B3JUbsYd84R8bFMs8KZT4RL80pDsEDfUbwvF_MlRqGlypgOf6CqYdsFVvdTQu-XxsVeAsibV-ExLxRr3sCKR1to1rmOqpc-22qvI-SsaM7tkwX4jL4S8OQnwSYJILmXTtPWgpyKPU7Ru9zZG1ce6wPPhWBZ8s50SoE1Z5PQvradmRnQSryPLWN9ZqLQy0xITUkrUGQdezzwyx-o6_ECkamw_gjaZd3Gu4_FH2eo0D_mCwGBInOxEKna46DZCv-sNHR56D_aUDjEcwc0TV-kXAEeZMGEzw.lpZW17Q1XasYW20Pfsb4fw\",\r\n    \"username\":\"rohitpal9621\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{AUTH_BASE_URL}}/refresh-user-token",
+					"host": [
+						"{{AUTH_BASE_URL}}"
+					],
+					"path": [
+						"refresh-user-token"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
