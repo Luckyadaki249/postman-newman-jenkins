@@ -8,6 +8,8 @@
   },
   "scripts":{
     "api-test-production": "newman run tests/jsonplaceholer.postman_collection.json  --reporters junit --reporter-junit-export newman.xml"
+    ,
+    "api-test-production": "newman run tests/CMS-AuthenticationManagement.postman_collection.json --reporters juit --reporter-junit-export newman1.xml"
     
   },
   "author": "Laxman Adaki",
