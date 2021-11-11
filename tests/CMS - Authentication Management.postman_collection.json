@@ -1,0 +1,170 @@
+{
+	"info": {
+		"_postman_id": "3b0c8bca-d494-4f3e-ae40-b0e3827339a2",
+		"name": "CMS - Authentication Management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "user-login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"215938f9-60e5-4a9e-bba6-7aef996f9ac0\");\r",
+							"});\r",
+							"\r",
+							"let responseData=pm.response.json();\r",
+							"console.log(responseData);\r",
+							"pm.environment.set(\"refreshToken\", responseData.refreshToken);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "appClientId",
+						"value": "2mq884ai06jrv0irv922fp6sh1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"username\": \"laxman.adaki\",\r\n\"password\": \"Laxman@123456\"\r\n}"
+				},
+				"url": {
+					"raw": "https://authentication-management.service.stage.cloud1.ws.continental-industry.com/user-login",
+					"protocol": "https",
+					"host": [
+						"authentication-management",
+						"service",
+						"stage",
+						"cloud1",
+						"ws",
+						"continental-industry",
+						"com"
+					],
+					"path": [
+						"user-login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "refresh-token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.globals.get(\"refreshToken\");\r",
+							"pm.environment.get(\"refreshToken\");\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.collectionVariables.set(\"refreshToken\",pm.environment.get(\"refreshToken\"));"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "appClientId",
+						"value": "2mq884ai06jrv0irv922fp6sh1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \r\n     \"refreshToken\": \"eyJjdHkiOiJKV1QiLCJlbmMiOiJBMjU2R0NNIiwiYWxnIjoiUlNBLU9BRVAifQ.JBr9k8eTvHvmGle4CegTLcGTK3HrodRFfHqbx5noOf1N4_HEJE1YZhWEYDMJXkjWcoiwBYnWBJZov12VuCFvZ6kfXRoGQCxOMHfUTr9n694BnFLovG4_n_fHwGXVy0qyryBjAKch_YOxzu6TrknYrtUekKwgcIKv273UbBLz_SqKOlV7JrAzvVbtT9uuQE4sV-17XwudnAcGlYNdONz2vEBrVyfppq1wnYOo2dsmnh7ave5yEDG8ezETZAqK0WTKqHJ63gIXpOYgpf_EEDhquE6LVpB8cbiwCL-LL36aDfaPPeX6aQ_TpiU4ogK0K7tFPJLZ2riVcB08UneyUDOXSA.rQpu2yDBvviVTXyt.DX1obVProLUgUBFpVTcDAGBoHFrMN_CZ1k6J885vyFfHUkzSsYfFfsdL6WkwqeL1NDYhgl4L5MtMAxnXPVFsX4L7HkuZej8kWQM-GsI2dhoITvYnsskSLKvQ1L_PGClREHBRebsN7umgmYHJsUiaUTKp9yn50NPt1eJlk13JEtvhKMr82LFVnYBV7aYsSMnILs4L8wsAR5NVwEITsrX3eNXbU2dmfIlzKdMoZsdqOP__UfjFdAmaXBjCUG_gqwp0jWU8O3YNIko1KsdjFFvEB01dcR6-fV6hHINeUVYAJAgpWxeXBfSS4jO90g0_1PxSod12fZfUEG6-OMYHRSRKAowFjvM42qVCZR7xWjymlZ-wA9PXthTw4ZgwTfMC9HdBDFDSTyaOUHhte33uzoUxFIcUKCoHz6x29qALIwzO7V9kYr_UYLpGv1kKSfLyCJ4glLp2ifMI3LXQ3gbXiv6Pc9OLbfKLU44FaJH6ktwJWPMii_4SSgEzZAT9TFoah30Fsjuoz8gCjhF5Ydnn04gR5w92MKl0QROUECDzeSjfdqwmLl4FWPr1hRglbkD5zarxFlBBUfgjSaVGnj1qKsZhKp9w5HCkVMjsGYC9UEaOPeA2i9A7VlfHyXzV5QbomtJEwWbSkFSXDAFnh_8eX411NItV-6-5pipHlpgEPye8PUpJRVAWGfeX77dGVFmPig4nq4RI_7K1GPWSymoxdly7f_H5EEj9pTHVhq3A91NUJmjjmmuoB0fwDQF9wVPw6VHQDWIL9NB15BDwES5Je3dUtkAfNPckdGINIXUI8BilvYrpVfhCm6w-6yIkkWTHDPe1BMSHaKVmkw0irS-x0BJMcp3-ULgj5T5JLS6svByR7T8WH71QwBr_cpEbjPfiLmBwKJRc2-mE2NxfPI-5jEv5ii7hdrTj43z11EYCA9WPvBW2zRSjn9BthYxrBhnsSlgGscATDVTlYwKYwve2I1YVVkVfikEpZP94w0jRLOjgkqJ1caxLwvIcOd3frrSeyVQzRbx4-O1GoXbeBjtZmtNilmJl6Qk2UePejAsEweX6Fjo3nSuQbNV1tNX4snd8wgRaI0_xKEDW10dm_qqEFyNBfY-6syq_MZTj19w8Ky3hmI34f4I3xTlvcy5nNepgheYrQ_4a4dXDB9ceIKcJldijxqEm9qiWZRKF22DC6o9cWyKnYhHfiPy2tvy_X6wp8f3nEvqL3XguOsWg2Q-JBBPcEpO6VjS38ToCC9qr7btOLWxw_7Gh04yXQXB1OXcCIetudFAhfpttBhkOsuNSTBwqO2e7WQ.LRh7bBJ2ryuVE0XhcHeKog\",\r\n    \r\n    \"email\": \"laxman.adaki@hcl.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://authentication-management.service.stage.cloud1.ws.continental-industry.com/refresh-user-token",
+					"protocol": "https",
+					"host": [
+						"authentication-management",
+						"service",
+						"stage",
+						"cloud1",
+						"ws",
+						"continental-industry",
+						"com"
+					],
+					"path": [
+						"refresh-user-token"
+					],
+					"query": [
+						{
+							"key": "refresh_token",
+							"value": "refreshToken",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "refreshToken",
+			"value": ""
+		}
+	]
+}
